@@ -15,19 +15,30 @@ const dateBuilder = (d) => {
 };
 
 $(document).ready(function(){
+
     let apiKey = '320cbe9c0b7fc6c430d04127cfe24661'
-    let city = "India";
+    let city = 'jaipur'
 
     $.ajax({
         url : `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
         type : 'GET',
         dataType : 'json',
-        success : function(){
-            
+        success : function(data){
+
+            $(".city-name").text(data.name);
+            $(".temprat").text(data.main.temp + "°c");
+            $(".condition").text(data.weather[0].description)
+            $(".wind").text(data.wind.speed + "Km/h")
+            $(".humidity").text(data.main.humidity+"%")
+            $(".cloud").text(data.clouds.all+"%")
+
+        },
+        error: function(error) {
+            console.log('Error:', error);
         }
-
     })
-
 
     $(".time-date").text(dateBuilder(d))
 })
+
+
