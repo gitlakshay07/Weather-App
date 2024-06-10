@@ -15,5 +15,19 @@ const dateBuilder = (d) => {
 };
 
 $(document).ready(function(){
+    let apiKey = '320cbe9c0b7fc6c430d04127cfe24661'
+    let city = "India";
+
+    $.ajax({
+        url : `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
+        type : 'GET',
+        dataType : 'json',
+        success : function(){
+            
+        }
+
+    })
+
+
     $(".time-date").text(dateBuilder(d))
 })
