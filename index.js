@@ -1,5 +1,4 @@
-
-
+// DATE
 const dateBuilder = () => {
     let d = new Date;
 
@@ -15,13 +14,18 @@ const dateBuilder = () => {
     let seconds = d.getSeconds();
 
     minuts = minuts < 10 ? '0' + minuts : minuts;
-  
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
     return `${hour}:${minuts}:${seconds} ${day}, ${date} ${month} ${year}`;
 };
+// DATE
+
 $(document).ready(function(){
 
     let apiKey = '320cbe9c0b7fc6c430d04127cfe24661';
     let city = 'New Delhi';
+
+    // Fetch Waeather
 
     function fetchWeather(city){
         $.ajax({
@@ -44,26 +48,52 @@ $(document).ready(function(){
             },
             error: function(error) {
                 console.log('Error:', error);
-                // alert('Failed to fetch weather data. Please check the city name and try again.');
+                alert('Failed to fetch weather data. Please check the city name and try again.');
             }
         })
     };
     fetchWeather(city);
 
-    setInterval(() => {
-        fetchWeather(city);
-    }, 6000);
+    // Fetch Waeather
 
-    $(".time-date").text(dateBuilder());
-    setInterval(() => {
-        $(".time-date").text(dateBuilder());
-    }, 1000);
+   //Show Time
+
+   $(".time-date").text(dateBuilder());
+
+   setInterval(() => {
+       $(".time-date").text(dateBuilder());
+   }, 1000);
+
+   //Show Time
+
+
+   function initAutocomplete() {
+
+        let Input = $('#autocomplete-search');
+        const autocomplete = new google.maps.places.Autocomplete(Input);
+
+        autocomplete.addListener('place_changed', function() {
+            const place = autocomplete.getPlace();
+            if (place.geometry) {
+                city = place.name;
+                fetchWeather(city);
+            }
+            // $('#lat').val(place.geometry['location'].lat());
+            // $('#long').val(place.geometry['location'].lat());
+        });
+    }
+    initAutocomplete();
 
     $("#locatn-inp").on('submit', function(e) {
         e.preventDefault();
-        city = $(".search").val();
+        city = $(".search").val().trim();
+
         if (city) {
             fetchWeather(city);
         }
     });
+
+    setInterval(() => {
+        fetchWeather(city);
+    }, 600000);
 })

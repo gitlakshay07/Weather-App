@@ -9,8 +9,6 @@
     background-image: url(./imgs/bg-image.avif);
     background-size: cover;
     background-position: center;
-    width: 1100px;
-    min-height: 600px;
     position: relative;
 }
 .card::before{
@@ -20,17 +18,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-}
-.box{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: flex-start;
 }
 .panel {
     position: absolute;
@@ -43,10 +30,6 @@
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    z-index: 1;
-}
-.panel li {
-    list-style: none;
 }
 .weather-icon {
     height: 50px;
@@ -70,6 +53,7 @@
     padding: 0;
 }
 .panel ul li {
+    list-style: none;
     color: #ccc;
     margin: 25px 0;
     cursor: pointer;
@@ -81,13 +65,10 @@
 }
 
 @media (Width < 760px) {
-    .panel, .card {
+    .panel {
         position: relative;
         width: 100%;
-        max-height: 62vh;
-    }
-    h2 {
-        font-size: 20px;
+        max-height: 65vh;
     }
     .panel ul li {
        margin: 12px;
