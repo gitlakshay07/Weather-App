@@ -48,6 +48,12 @@
 .panel li {
     list-style: none;
 }
+.weather-icon {
+    height: 50px;
+    width: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
 .search {
     width: 85%;
     border: none;
@@ -78,7 +84,10 @@
     .panel, .card {
         position: relative;
         width: 100%;
-        max-height: 70vh;
+        max-height: 62vh;
+    }
+    h2 {
+        font-size: 20px;
     }
     .panel ul li {
        margin: 12px;
