@@ -66,28 +66,11 @@ $(document).ready(function(){
 
    //Show Time
 
-
-   function initAutocomplete() {
-
-        let Input = $('#autocomplete-search');
-        const autocomplete = new google.maps.places.Autocomplete(Input);
-
-        autocomplete.addListener('place_changed', function() {
-            const place = autocomplete.getPlace();
-            if (place.geometry) {
-                city = place.name;
-                fetchWeather(city);
-            }
-            // $('#lat').val(place.geometry['location'].lat());
-            // $('#long').val(place.geometry['location'].lat());
-        });
-    }
-    initAutocomplete();
+   
 
     $("#locatn-inp").on('submit', function(e) {
         e.preventDefault();
-        city = $(".search").val().trim();
-
+        city = $(".search").val();
         if (city) {
             fetchWeather(city);
         }
