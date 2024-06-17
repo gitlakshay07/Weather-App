@@ -56,6 +56,10 @@ $(document).ready(function(){
 
     // Fetch Waeather
 
+    var autocomplete;
+    var input = document.getElementById('auto-search');
+    autocomplete = new google.maps.places.Autocomplete(input);
+
    //Show Time
 
    $(".time-date").text(dateBuilder());
@@ -65,9 +69,6 @@ $(document).ready(function(){
    }, 1000);
 
    //Show Time
-
-   
-
     $("#locatn-inp").on('submit', function(e) {
         e.preventDefault();
         city = $(".search").val();
